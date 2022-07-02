@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: black;
+        }
+        .form{
+            color: aliceblue;
+            text-align: center;
+        }
+        .container{
+            padding: 6px;
+    margin: 24px;
+        }
+       #div-error {
+            padding: 10px;
+    background: brown;
+    color: aliceblue;
+    display: none;
+        }
+        input{
+            width: 574px;
+           margin: 12px;
+        }
+    </style>
+</head>
+<body>
+   
+     <div class="form">
+        form validation with jQuery 
+    </div>
+    <div class="container">
+        <div class="error" id="div-error"></div>
+        <div class="success"></div>
+        <form action="" method="post" name="from_login" onsubmit="return formvalidation();">
+            <div class="input-group">
+               
+                <input type="text" name="full_name" id="full_name" placeholder="please enter full name">
+            </div>
+            <div class="input-group">
+               
+                <input type="text" name="email" id="email" placeholder="please enter full email">
+            </div>
+             
+            <div class="input-group">
+               
+                <input type="text" name="phone" id="phone" placeholder="please enter phone">
+            </div>
+            <div class="input-group">
+               
+                <input type="password" name="password" id="password" placeholder="please enter password">
+            </div>
+            <div class="input-group">
+               
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Password didn't match">
+            </div>
+            <div class="input-group">
+               
+                <input type="submit" name="btn" value="register" style="background: aqua;">
+            </div>
+             
+        
+        
+        
+        </form>
+    </div>
+   
+    
+
+<script>
+    
+    function formvalidation(){
+        //return false;
+        var name=$("#full_name").val();
+        var email=$("#email").val();
+        var phone=$("#phone").val();
+        var password=$("#password").val();
+        var confirm=$("#confirm_password").val();
+
+        if(name==""){
+            $("#div-error").show();
+            $("#div-error").text("taper votre nom est obligatoire");
+            return false;
+        }else{
+            var pattern= /^[a-zA-Z]+$/;
+            if(!pattern.test(name)){
+                $("#div-error").show();
+            $("#div-error").text("svp  verifiez votre nom est incorrecte");
+            return false;
+            }
+        }  
+        if(email==""){
+            $("#div-error").show();
+            $("#div-error").text("taper votre email est obligatoire");
+            return false;
+        } 
+            else{
+            var pattern= /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+            if(!pattern.test(email)){
+                $("#div-error").show();
+            $("#div-error").text("svp  verifiez votre email est incorrecte");
+            return false;
+            }
+        }
+        if(phone==""){
+            $("#div-error").show();
+            $("#div-error").text("taper votre phone est obligatoire");
+            return false;
+        } 
+            else{
+            var pattern= /^[0-9]+$/;
+            if(!pattern.test(phone)){
+                $("#div-error").show();
+            $("#div-error").text("svp  verifiez votre phone est incorrecte");
+            return false;
+            }
+            
+        }
+        if(password==""){
+            $("#div-error").show();
+            $("#div-error").text("taper votre password est obligatoire");
+            return false;
+        
+            
+        }
+        if (password != confirm) {
+            $("#div-error").show();
+            $("#div-error").text("**Password didn't Match");
+            return false;
+        
+            
+        }
+        return true;
+    }
+   
+</script>
+
+
+
+
+    <script src=" https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
